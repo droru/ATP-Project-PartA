@@ -11,6 +11,13 @@ public class Maze {
 
     public Maze(int row, int col) {
         this.maze=new int [row][col];
+        for(int i=0; i<row; i++)
+        {
+            for(int j=0; j<col; j++)
+            {
+                this.maze[i][j] = -1;
+            }
+        }
     }
 
     public Position getStartPositon() {
