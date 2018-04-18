@@ -11,9 +11,16 @@ public class Maze {
 
     public Maze(int row, int col) {
         this.maze=new int [row][col];
+        for(int i=0; i<row; i++)
+        {
+            for(int j=0; j<col; j++)
+            {
+                this.maze[i][j] = -1;
+            }
+        }
     }
 
-    public Position getStartPositon() {
+    public Position getStartPosition() {
         return startPositon;
     }
 
@@ -36,9 +43,9 @@ public class Maze {
         this.maze[pos.getRow()][pos.getColumn()]=val;
     }
     public int getPosition(Position pos){
-       return this.maze[pos.getRow()][pos.getColumn()];
+        return this.maze[pos.getRow()][pos.getColumn()];
     }
-    public void PrintMaze(){
+    public void print(){
         for (int i=0;i<maze.length;i++) {
             for (int j = 0; j < maze.length; j++)
                 System.out.print(maze[i][j] + " ");
