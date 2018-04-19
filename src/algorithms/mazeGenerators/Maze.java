@@ -5,7 +5,7 @@ import javafx.geometry.Pos;
 public class Maze {
     private Position startPositon;
     private Position goalPosition;
-    private int [][] maze;
+    protected int [][] maze;
 
     public Maze(int[][] maze) {
         this.maze = maze;
