@@ -3,7 +3,7 @@ package algorithms.mazeGenerators;
 public class Maze {
     private Position startPositon;
     private Position goalPosition;
-    private int [][] maze;
+    protected int [][] maze;
 
     public Maze(int[][] maze) {
         this.maze = maze;
@@ -20,7 +20,7 @@ public class Maze {
         }
     }
 
-    public Position getStartPositon() {
+    public Position getStartPosition() {
         return startPositon;
     }
 
@@ -43,9 +43,9 @@ public class Maze {
         this.maze[pos.getRow()][pos.getColumn()]=val;
     }
     public int getPosition(Position pos){
-       return this.maze[pos.getRow()][pos.getColumn()];
+        return this.maze[pos.getRow()][pos.getColumn()];
     }
-    public void PrintMaze(){
+    public void print(){
         for (int i=0;i<maze.length;i++) {
             for (int j = 0; j < maze.length; j++)
                 System.out.print(maze[i][j] + " ");

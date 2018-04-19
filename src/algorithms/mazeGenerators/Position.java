@@ -29,4 +29,10 @@ public class Position {
     public String toString() {
         return "Row: "+this.row+" Colum: "+this.column;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+       Position pos=(Position)obj;
+       return (pos.getColumn()==this.getColumn())&&(pos.getRow()==this.getRow());
+    }
 }
