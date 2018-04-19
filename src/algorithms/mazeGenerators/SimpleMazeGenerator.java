@@ -12,10 +12,7 @@ public class SimpleMazeGenerator extends AMazeGenerator {
         maze.setStartPositon(new Position(rand.nextInt(numRows), 0));
 
         //end point
-
-        maze.setStartPositon(new Position(rand.nextInt(numRows), numColumns-1));
-
-      maze.setGoalPosition(new Position(rand.nextInt(numRows), numColumns-1));
+        maze.setGoalPosition(new Position(rand.nextInt(numRows), numColumns-1));
 
         //make Path from Start Point to Goal Point
         setPath(maze);
