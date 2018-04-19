@@ -1,5 +1,4 @@
 package algorithms.search;
 
-public class Astate {
-
+public class MazeState {
 }

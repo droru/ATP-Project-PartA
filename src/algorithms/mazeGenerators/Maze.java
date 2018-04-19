@@ -1,9 +1,11 @@
 package algorithms.mazeGenerators;
 
+import javafx.geometry.Pos;
+
 public class Maze {
     private Position startPositon;
     private Position goalPosition;
-    protected int [][] maze;
+    private int [][] maze;
 
     public Maze(int[][] maze) {
         this.maze = maze;
@@ -45,12 +47,26 @@ public class Maze {
     public int getPosition(Position pos){
         return this.maze[pos.getRow()][pos.getColumn()];
     }
+    public int getNumRows(){
+        return maze.length;
+    }
+
+    public int getNumColumns(){
+        return maze[0].length;
+    }
     public void print(){
         for (int i=0;i<maze.length;i++) {
-            for (int j = 0; j < maze.length; j++)
-                System.out.print(maze[i][j] + " ");
+            for (int j = 0; j < maze.length; j++) {
+                if (j==0&&maze[i][j]==0)
+                    System.out.print("S"+" ");
+                else if (j==maze[0].length-1&&maze[i][j]==0)
+                    System.out.print("E"+" ");
+                else
+                    System.out.print(maze[i][j] + " ");
+            }
             System.out.println();
         }
+
     }
 }
 

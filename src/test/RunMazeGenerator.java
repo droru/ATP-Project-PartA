@@ -12,7 +12,11 @@ public class RunMazeGenerator {
         // generate another maze
         Maze maze = mazeGenerator.generate(10/*rows*/, 10/*columns*/);
         // prints the maze
+
         maze.print();
+        System.out.println(String.format("Maze generation time(ms): %s",
+                mazeGenerator.measureAlgorithmTimeMillis(10/*rows*/,10/*columns*/)));
+
 // get the maze entrance
         Position startPosition = maze.getStartPosition();
 // print the position
