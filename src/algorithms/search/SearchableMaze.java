@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchableMaze extends Maze implements ISearchable{
+
     public SearchableMaze(int[][] maze) {
         super(maze);
     }
@@ -14,8 +15,8 @@ public class SearchableMaze extends Maze implements ISearchable{
     }
 
     @Override
-    public List<Astate> getAllPossibleStates(Astate state) {
-        ArrayList<Astate> possibleStates = new ArrayList<>();
+    public List<AState> getAllPossibleStates(AState state) {
+        ArrayList<AState> possibleStates = new ArrayList<>();
         int row = state.getPos().getRow();
         int col = state.getPos().getColumn();
         Position up = new Position(row-1, col);

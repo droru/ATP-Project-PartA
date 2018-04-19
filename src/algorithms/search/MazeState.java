@@ -2,7 +2,7 @@ package algorithms.search;
 
 import algorithms.mazeGenerators.Position;
 
-public class MazeState {
+public class MazeState extends AState {
     public MazeState(int row, int column) {
         super(row, column);
     }
