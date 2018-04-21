@@ -11,6 +11,12 @@ public class Maze {
         this.maze = maze;
     }
 
+    public Maze(Maze maze) {
+        this.maze = maze.getMaze();
+        this.startPositon = maze.getStartPosition();
+        this.goalPosition = maze.getGoalPosition();
+    }
+
     public Maze(int row, int col) {
         this.maze=new int [row][col];
         for(int i=0; i<row; i++)

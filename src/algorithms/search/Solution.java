@@ -9,11 +9,11 @@ public class Solution {
         path=new ArrayList<>();
     }
 
-
-
     public ArrayList getSolutionPath(){
         return path;
     }
+
+    public int getSolutionLength(){return path.size();}
 
     public void AddState(AState state){
         path.add(i,state);

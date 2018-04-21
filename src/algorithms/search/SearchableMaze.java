@@ -1,6 +1,8 @@
 package algorithms.search;
 import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.Position;
+import javafx.util.Pair;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +12,22 @@ public class SearchableMaze extends Maze implements ISearchable{
         super(maze);
     }
 
+    public SearchableMaze(Maze maze) {
+        super(maze);
+    }
+
     public SearchableMaze(int row, int col) {
         super(row, col);
+    }
+
+    @Override
+    public AState getStartState(){
+        return new MazeState(getStartPosition());
+    }
+
+    @Override
+    public AState getGoalState() {
+        return new MazeState(getGoalPosition());
     }
 
     @Override
@@ -37,11 +53,11 @@ public class SearchableMaze extends Maze implements ISearchable{
     private boolean isValidPosition(Position position) {
         int row = position.getRow();
         int col = position.getColumn();
-        if(row<0 || row>getNumRows())
+        if(row<0 || row>=getNumRows())
             return false;
-        if(col<0 || col>getNumColumns())
+         if(col<0 || col>=getNumColumns())
             return false;
-        if(maze[row][col] == 1)
+         if (maze[row][col] == 1)
             return false;
 
         return true;

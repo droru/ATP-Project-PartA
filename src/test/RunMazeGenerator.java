@@ -10,7 +10,14 @@ public class RunMazeGenerator {
         System.out.println(String.format("Maze generation time(ms): %s",
                 mazeGenerator.measureAlgorithmTimeMillis(10/*rows*/,10/*columns*/)));
         // generate another maze
-        Maze maze = mazeGenerator.generate(10/*rows*/, 10/*columns*/);
+       // Maze maze = mazeGenerator.generate(10/*rows*/, 10/*columns*/);
+       int [][] temp={{0,0,1,1,1,1},
+                      {1,0,0,0,0,1},
+                      {1,0,0,0,0,1},
+                      {1,0,0,0,0,1},
+                      {1,1,1,1,0,0}};
+
+        Maze maze =new Maze(temp);
         // prints the maze
 
         maze.print();

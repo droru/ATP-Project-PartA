@@ -1,16 +1,13 @@
 package algorithms.search;
 
 public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
-    String name;
+    protected Solution solution;
 
-    public ASearchingAlgorithm() {
-        this.name = "";
-    }
-    public ASearchingAlgorithm(String name) {
-        this.name = name;
-    }
+    public ASearchingAlgorithm() { solution = new Solution();  }
 
-    public String getName() {
-        return name;
-    }
+    public abstract String getName();
+
+    public abstract Solution solve(ISearchable isearch);
+
+    public int getNumberOfNodesEvaluated(){return solution.getSolutionLength();}
 }
