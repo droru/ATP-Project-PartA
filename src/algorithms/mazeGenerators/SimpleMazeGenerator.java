@@ -23,7 +23,7 @@ public class SimpleMazeGenerator extends AMazeGenerator {
 
         return maze;
     }
-    private void setPath(Maze maze){
+    private void  setPath(Maze maze){
 
         boolean done =false;
         Position pos=new Position(maze.getStartPosition().getRow(),maze.getStartPosition().getColumn());

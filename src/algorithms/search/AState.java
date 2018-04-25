@@ -7,7 +7,7 @@ import java.util.Objects;
 public abstract  class AState implements Comparable {
    private Position pos;
    private AState parent;
-   private int distance = -1;
+
 
     public AState(Position pos) {
         this.pos = pos;
@@ -34,14 +34,6 @@ public abstract  class AState implements Comparable {
         return parent;
     }
 
-    public void setDistance(int distance) {
-        this.distance = distance;
-    }
-
-    public int getDistance() {
-
-        return distance;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -54,7 +46,7 @@ public abstract  class AState implements Comparable {
     @Override
     public int hashCode() {
 
-        return Objects.hash(pos, parent);
+        return pos.hashCode();
     }
 
     @Override
