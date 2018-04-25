@@ -4,7 +4,7 @@ import algorithms.mazeGenerators.Position;
 
 import java.util.Objects;
 
-public abstract  class AState {
+public abstract  class AState implements Comparable {
    private Position pos;
    private AState parent;
 

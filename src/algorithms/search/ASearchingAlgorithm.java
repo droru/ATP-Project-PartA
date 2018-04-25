@@ -10,4 +10,10 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
     public abstract Solution solve(ISearchable isearch);
 
     public int getNumberOfNodesEvaluated(){return solution.getSolutionLength();}
+
+    public void backtrackPath(AState state, Solution solution) {
+        if(state.getParent() != null)
+            backtrackPath(state.getParent(), solution);
+        solution.AddState(state);
+    }
 }

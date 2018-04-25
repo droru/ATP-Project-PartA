@@ -11,7 +11,8 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
     @Override
     public Solution solve(ISearchable isearch) {
         LinkedHashSet<AState> visited = new LinkedHashSet<>();
-        LinkedList<AState> queue = new LinkedList<>();
+        Queue<AState> queue = getQueue();
+
         AState start = isearch.getStartState();
         AState goal = isearch.getGoalState();
 
@@ -40,9 +41,8 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
         return null;
     }
 
-    private void backtrackPath(AState state, Solution solution) {
-        if(state.getParent() != null)
-            backtrackPath(state.getParent(), solution);
-        solution.AddState(state);
+    protected Queue<AState> getQueue()
+    {
+        return new LinkedList<>();
     }
 }
