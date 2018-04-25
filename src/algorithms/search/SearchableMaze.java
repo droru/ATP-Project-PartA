@@ -1,7 +1,6 @@
 package algorithms.search;
 import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.Position;
-import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -10,14 +10,13 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
 
     @Override
     public Solution solve(ISearchable isearch) {
-        List<AState> visited = new ArrayList<>();
+        LinkedHashSet<AState> visited = new LinkedHashSet<>();
         LinkedList<AState> queue = new LinkedList<>();
         AState start = isearch.getStartState();
         AState goal = isearch.getGoalState();
 
         queue.add(start);
         visited.add(start);
-        start.setDistance(0);
 
         while (!queue.isEmpty()) {
             AState vertex = queue.remove();
@@ -30,16 +29,11 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
             for (AState state : adjStates) {
                 if(!visited.contains(state)){
                     state.setParent(vertex);
-                    state.setDistance(vertex.getDistance()+1);
                     queue.add(state);
                     visited.add(state);
                 }
-                else{
-                    if(vertex.getDistance()+1 < state.getDistance()) {
-                        state.setDistance(vertex.getDistance()+1);
-                        state.setParent(vertex);
-                    }
-                }
+
+
             }
         }
         //didn't find a way - retrun null
