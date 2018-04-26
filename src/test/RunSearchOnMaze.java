@@ -5,9 +5,11 @@ import algorithms.search.*;
 import java.util.ArrayList;
 public class RunSearchOnMaze {
     public static void main(String[] args) {
+        Long startTime = System.currentTimeMillis();
+
         //IMazeGenerator mg = new SimpleMazeGenerator();
         IMazeGenerator mg=new MyMazeGenerator();
-        Maze maze = mg.generate( 1000,1000);
+        Maze maze = mg.generate( 10,15);
         /*int [][] temp={{1,1,1,1,1,1,},
                        {1,0,0,0,0,1},
                        {1,0,1,1,0,1},
@@ -35,10 +37,12 @@ public class RunSearchOnMaze {
   */
         maze.print();
         SearchableMaze searchableMaze = new SearchableMaze(maze);
-        //solveProblem(searchableMaze, new BreadthFirstSearch());
-        solveProblem(searchableMaze, new DepthFirstSearch());
+        solveProblem(searchableMaze, new BreadthFirstSearch());
+        //solveProblem(searchableMaze, new DepthFirstSearch());
         //solveProblem(searchableMaze, new BestFirstSearch());
 
+        Long endTime = System.currentTimeMillis();
+        System.out.println("time:" + (endTime - startTime));
     }
     private static void solveProblem(ISearchable domain, ISearchingAlgorithm searcher) {
         //Solve a searching problem with a searcher

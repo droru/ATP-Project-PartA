@@ -23,6 +23,11 @@ public class SimpleMazeGenerator extends AMazeGenerator {
 
         return maze;
     }
+
+    /**
+     * build the path for the maze
+     * @param maze
+     */
     private void  setPath(Maze maze){
 
         boolean done =false;
@@ -53,6 +58,15 @@ public class SimpleMazeGenerator extends AMazeGenerator {
         }
 
     }
+
+    /**
+     * initialize all the cells in the maze
+     * the frame consists only from walls cells (with value 1)
+     * except the start position and the goal position
+     * the rest of the cells has random values
+     * except the path, the cells that already define as pass (with value 0)
+     * @param maze - the Maze to initialize
+     */
     private void initializeMaze(Maze maze){
 
         Position pos=new Position(0,0);

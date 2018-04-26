@@ -7,16 +7,12 @@ import java.util.List;
 
 public class SearchableMaze extends Maze implements ISearchable{
 
-    public SearchableMaze(int[][] maze) {
-        super(maze);
-    }
-
+    /**
+     * constructor with maze parameter
+     * @param maze - the maze for the current searchable maze
+     */
     public SearchableMaze(Maze maze) {
         super(maze);
-    }
-
-    public SearchableMaze(int row, int col) {
-        super(row, col);
     }
 
     @Override
@@ -34,24 +30,31 @@ public class SearchableMaze extends Maze implements ISearchable{
         ArrayList<AState> possibleStates = new ArrayList<>();
         int row = state.getPos().getRow();
         int col = state.getPos().getColumn();
-        Position up = new Position(row-1, col);
-        Position right = new Position(row, col+1);
-        Position down = new Position(row+1, col);
-        Position left = new Position(row, col-1);
+        MazeState up = new MazeState(row-1, col);
+        MazeState right = new MazeState(row, col+1);
+        MazeState down = new MazeState(row+1, col);
+        MazeState left = new MazeState(row, col-1);
         if(isValidPosition(up))
-            possibleStates.add(new MazeState(up));
+            possibleStates.add(up);
         if(isValidPosition(right))
-            possibleStates.add(new MazeState(right));
+            possibleStates.add(right);
         if(isValidPosition(down))
-            possibleStates.add(new MazeState(down));
+            possibleStates.add(down);
         if(isValidPosition(left))
-            possibleStates.add(new MazeState(left));
+            possibleStates.add(left);
         return possibleStates;
     }
 
-    private boolean isValidPosition(Position position) {
-        int row = position.getRow();
-        int col = position.getColumn();
+    /**
+     * check if the given state is valid:
+     * 1. the state is inside the maze bounds
+     * 2. the value of the state is not wall
+     * @param state - a maze state to check
+     * @return bool if the given state is valid
+     */
+    private boolean isValidPosition(MazeState state) {
+        int row = state.getPos().getRow();
+        int col = state.getPos().getColumn();
         if(row<0 || row>=getNumRows())
             return false;
          if(col<0 || col>=getNumColumns())

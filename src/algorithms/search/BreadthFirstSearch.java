@@ -41,6 +41,12 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
         return null;
     }
 
+    /**
+     * define on which queue the algorithm is running
+     * for Breadth First Search - the type is Queue of AState
+     * for Best First Search - the type is Priority Queue of AState
+     * @return the queue for the algorithm
+     */
     protected Queue<AState> getQueue()
     {
         return new LinkedList<>();
