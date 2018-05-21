@@ -13,6 +13,12 @@ public class MyMazeGenerator extends AMazeGenerator {
 
     @Override
     public Maze generate(int numRows, int numColumns) {
+        if(numRows <= 0 || numColumns <= 0)
+        {
+            /* default maze */
+         numRows=10;numColumns=10;
+        }
+
         random = new Random();
         width = numColumns;
         hight = numRows;
@@ -52,7 +58,6 @@ public class MyMazeGenerator extends AMazeGenerator {
             if (maze[i][width - 1] == 0)
                 exit.add(new Position(i, width - 1));
         if (!exit.isEmpty()) {
-            System.out.println(exit.size());
             res.setGoalPosition(exit.remove(random.nextInt(exit.size() - 1)));
         }
         else {

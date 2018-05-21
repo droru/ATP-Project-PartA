@@ -66,7 +66,7 @@ public class Position {
 
     @Override
     public boolean equals(Object obj) {
-        if (this==null)
+        if (this==null || obj == null)
             return  false ;
        Position pos=(Position)obj;
        return (pos.getColumn()==this.getColumn())&&(pos.getRow()==this.getRow());

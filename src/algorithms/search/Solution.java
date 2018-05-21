@@ -32,8 +32,10 @@ public class Solution {
      * @param state - the state to add
      */
     public void AddState(AState state){
-        path.add(i,state);
-        i++;
+        if(state != null) {
+            path.add(i, state);
+            i++;
+        }
     }
 
     /**
@@ -41,6 +43,7 @@ public class Solution {
      * @param index - the index for the state to delete
      */
     public void RemoveState(int index){
-        path.remove(index);
+        if(index >= 0)
+            path.remove(index);
     }
 }

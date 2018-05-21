@@ -1,4 +1,3 @@
-package test;
 import algorithms.mazeGenerators.*;
 //import algorithms.mazeGenerators.MyMazeGenerator;
 import algorithms.search.*;
@@ -7,10 +6,10 @@ public class RunSearchOnMaze {
     public static void main(String[] args) {
         Long startTime = System.currentTimeMillis();
 
-        //IMazeGenerator mg = new SimpleMazeGenerator();
-        IMazeGenerator mg=new MyMazeGenerator();
-        Maze maze = mg.generate( 10,15);
-        /*int [][] temp={{1,1,1,1,1,1,},
+        IMazeGenerator mg = new SimpleMazeGenerator();
+        //IMazeGenerator mg=new MyMazeGenerator();
+        Maze maze = mg.generate( 100,100);
+        /*int [][] temp={{1,1,1,1,1,1},
                        {1,0,0,0,0,1},
                        {1,0,1,1,0,1},
                        {0,0,1,1,0,1},
@@ -28,18 +27,25 @@ public class RunSearchOnMaze {
                         {1, 1, 1, 1, 0, 1, 0, 1, 1, 1},{0 ,0 ,0 ,0 ,0, 1 ,0, 0, 0,0 },
                         {0 ,1 ,1, 1, 0, 1, 0, 1, 1, 1 },{0, 1, 0, 0, 0, 1, 0, 1, 0, 1},
                         {1, 1, 1, 1, 1, 1, 0, 1, 0, 1 },{0, 0, 0, 0, 0, 0, 0, 0, 0, 1}};
-
-       // Position start=new Position(9,0);
-       // Position End=new Position(5,9);
-        Maze maze =new Maze(temp2);
+*/
+        /*int [][] temp={
+                {1,1,1,1,1,1},
+                {1,0,0,0,0,1},
+                {1,0,1,0,0,1},
+                {0,0,0,0,0,1},
+                {1,1,1,0,0,0},
+                {1,1,1,1,1,1}};
+        Position start=new Position(3,0);
+        Position End=new Position(4,5);
+        Maze maze =new Maze(temp);
         maze.setStartPositon(start);
-        maze.setGoalPosition(End);
-  */
+        maze.setGoalPosition(End);*/
+
         maze.print();
         SearchableMaze searchableMaze = new SearchableMaze(maze);
         solveProblem(searchableMaze, new BreadthFirstSearch());
-        //solveProblem(searchableMaze, new DepthFirstSearch());
-        //solveProblem(searchableMaze, new BestFirstSearch());
+        solveProblem(searchableMaze, new DepthFirstSearch());
+        solveProblem(searchableMaze, new BestFirstSearch());
 
         Long endTime = System.currentTimeMillis();
         System.out.println("time:" + (endTime - startTime));

@@ -3,13 +3,26 @@ package algorithms.search;
 import algorithms.mazeGenerators.Position;
 
 public class MazeState extends AState {
+    private Position pos;
+
     /**
      * constructor with 2 int parameters
      * @param row - int that represents the row for the state
      * @param column - int that represents the column for the state
      */
     public MazeState(int row, int column) {
-        super(row, column);
+        super();
+        pos=new Position(row,column);
+    }
+
+    /**
+     * constructor with a position parameter and a boolean flag
+     * @param position - a position for the state
+     * @param isDiagonal - is the step to this position was made in diagonal or not?
+     */
+    public MazeState(Position position, boolean isDiagonal) {
+        super(isDiagonal);
+        this.pos = position;
     }
 
     /**
@@ -17,18 +30,11 @@ public class MazeState extends AState {
      * @param position - a position for the state
      */
     public MazeState(Position position) {
-        super(position);
+        this.pos = position;
     }
 
     @Override
-    public int compareTo(Object o) {
-        int sumThis = this.getPos().getRow()+this.getPos().getColumn();
-        int sumOther = ((MazeState)o).getPos().getRow()+((MazeState)o).getPos().getColumn();
-        if(sumOther > sumThis)
-            return 1;
-        else if (sumThis == sumOther)
-            return 0;
-        else
-            return -1;
+    public Object getPos() {
+        return pos;
     }
 }

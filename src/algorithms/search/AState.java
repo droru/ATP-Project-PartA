@@ -1,45 +1,35 @@
 package algorithms.search;
 
-import algorithms.mazeGenerators.Position;
-
 import java.util.Objects;
 
 public abstract  class AState implements Comparable {
-   private Position pos;
-   private AState parent;
+
+    private AState parent;
+    private int cost;
+    private static final int regularCost = 3;
+    private static final int diagonalCost = 4;
 
     /**
-     * constructor with a position parameter
-     * @param pos - a position for the state
+     * constructor with a boolean flag
+     * @param isDiagonal - is the step to this position was made in diagonal or not?
      */
-    public AState(Position pos) {
-        this.pos = pos;
+    public AState(boolean isDiagonal) {
+        if(isDiagonal)
+            this.cost = diagonalCost;
+        else
+            this.cost = regularCost;
     }
 
     /**
-     * constructor with 2 int parameters
-     * @param row - int that represents the row for the state
-     * @param col - int that represents the column for the state
+     * empty constructor
      */
-    public AState(int row, int col) {
-        pos=new Position(row,col);
-    }
+    public AState() {    }
 
     /**
      * getter for the position of the state
      * @return the position
      */
-    public Position getPos() {
-        return pos;
-    }
-
-    /**
-     * setter for the position of the state
-     * @param pos - the position to set for the state
-     */
-    public void setPos(Position pos) {
-        this.pos = pos;
-    }
+    public abstract Object getPos();
 
     /**
      * setter for the parent of the state
@@ -64,17 +54,27 @@ public abstract  class AState implements Comparable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AState state = (AState) o;
-        return Objects.equals(pos, state.pos);
+        return Objects.equals(getPos(), state.getPos());
     }
 
     @Override
     public int hashCode() {
+        return getPos().hashCode();
+    }
 
-        return pos.hashCode();
+    @Override
+    public int compareTo(Object o) {
+        AState other = ((AState)o);
+        if(cost < other.cost)
+            return 1;
+        else if (cost == other.cost)
+            return 0;
+        else
+            return -1;
     }
 
     @Override
     public String toString() {
-        return pos.toString();
+        return getPos().toString();
     }
 }

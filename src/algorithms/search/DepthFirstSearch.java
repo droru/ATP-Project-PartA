@@ -1,6 +1,5 @@
 package algorithms.search;
 
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Stack;
@@ -16,17 +15,19 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
 
     @Override
     public Solution solve(ISearchable isearch) {
+        if(isearch == null) return  null;
+
         stack=new Stack<>();
         AState start=isearch.getStartState();
         AState goal=isearch.getGoalState();
         LinkedHashSet<AState> visited=new LinkedHashSet<>();
         start.setParent(null);
 
-        //my changes
+
         stack.push(start);
         visited.add(start);
         RunDfs(visited,isearch, goal);
-        //RunDfs(visited,start,isearch, goal, solution);
+
 
         return solution;
     }
@@ -47,6 +48,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
             }
             else {
                 List<AState> adjStates = isearch.getAllPossibleStates(vertex);
+                numNodesEvaluated++;
                 for (AState state : adjStates) {
                     if (!visited.contains(state)) {
                         state.setParent(vertex);
@@ -57,29 +59,4 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
             }
         }
     }
-
-    /*private void RunDfs(LinkedHashSet<AState> visited, AState vertex, ISearchable isearch, AState goal, Solution solution) {
-        if(vertex != null) {
-
-            visited.add(vertex);
-            stack.push(vertex);
-            if (vertex.equals(goal)) {
-                backtrackPath(vertex, solution);
-                //return solution;
-            }
-            List<AState> adjStates = isearch.getAllPossibleStates(vertex);
-            for (AState state : adjStates) {
-                if (!visited.contains(state)) {
-                    state.setParent(vertex);
-                    //return
-                    RunDfs(visited, state, isearch, goal, solution);
-                }
-            }
-                if (!stack.empty()) {
-                    stack.pop();
-                    //return RunDfs(visited, stack.pop(), isearch, goal);
-                }
-            }
-        //return null;
-        }*/
 }

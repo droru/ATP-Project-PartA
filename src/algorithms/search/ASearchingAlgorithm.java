@@ -2,6 +2,7 @@ package algorithms.search;
 
 public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
     protected Solution solution;
+    protected int numNodesEvaluated = 0;
 
     /**
      * empty constructor
@@ -25,7 +26,7 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
      * getter for number of nodes that the algorithm evaluated in order to find the solution
      * @return int theat represents the number of nodes evaluated
      */
-    public int getNumberOfNodesEvaluated(){return solution.getSolutionLength();}
+    public int getNumberOfNodesEvaluated(){return numNodesEvaluated;}
 
     /**
      * go recursively through the states using the parent field
@@ -34,7 +35,7 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
      * @param solution - the solution for the current iteration of the recursive
      */
     public void backtrackPath(AState state, Solution solution) {
-        if(state.getParent() != null)
+        if(state != null && state.getParent() != null)
             backtrackPath(state.getParent(), solution);
         solution.AddState(state);
     }

@@ -5,6 +5,11 @@ import java.util.Random;
 public class SimpleMazeGenerator extends AMazeGenerator {
     @Override
     public Maze generate(int numRows, int numColumns) {
+        if(numRows <= 0 || numColumns <= 0)
+        {
+            /* default maze */
+            numRows=10;numColumns=10;
+        }
         Maze maze = new Maze(numRows, numColumns);
 
         //start point
@@ -39,7 +44,7 @@ public class SimpleMazeGenerator extends AMazeGenerator {
                 maze.setPosition(pos, 0);
                 pos.setColumn(pos.getColumn() + 1);
             }
-            if (pos.getRow()>maze.getGoalPosition().getColumn()) {
+            if (pos.getColumn()>maze.getGoalPosition().getColumn()) {
                 maze.setPosition(pos, 0);
                 pos.setColumn(pos.getColumn() - 1);
             }
