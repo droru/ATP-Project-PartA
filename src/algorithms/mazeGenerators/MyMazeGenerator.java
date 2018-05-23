@@ -13,14 +13,20 @@ public class MyMazeGenerator extends AMazeGenerator {
 
     @Override
     public Maze generate(int numRows, int numColumns) {
+        if(numRows <= 0 || numColumns <= 0)
+        {
+            /* default maze */
+         numRows=10;numColumns=10;
+        }
+
         random = new Random();
         width = numColumns;
         hight = numRows;
         maze = new int[hight][width];
         initinalize();
 
-        int x = random.nextInt(width-1);
-        int y = random.nextInt(hight-1);
+        int y = random.nextInt(width-1);
+        int x = random.nextInt(hight-1);
         frontiers.add(new int[]{x, y, x, y});
 
         while (!frontiers.isEmpty()) {
@@ -33,9 +39,9 @@ public class MyMazeGenerator extends AMazeGenerator {
                     frontiers.add(new int[]{x - 1, y, x - 2, y});
                 if (y >= 2 && maze[x][y - 2] == 1)
                     frontiers.add(new int[]{x, y - 1, x, y - 2});
-                if (x < width - 2 && maze[x + 2][y] == 1)
+                if (x < hight - 2 && maze[x + 2][y] == 1)
                     frontiers.add(new int[]{x + 1, y, x + 2, y});
-                if (y < hight - 2 && maze[x][y + 2] == 1)
+                if (y < width - 2 && maze[x][y + 2] == 1)
                     frontiers.add(new int[]{x, y + 1, x, y + 2});
             }
         }
@@ -52,7 +58,6 @@ public class MyMazeGenerator extends AMazeGenerator {
             if (maze[i][width - 1] == 0)
                 exit.add(new Position(i, width - 1));
         if (!exit.isEmpty()) {
-            System.out.println(exit.size());
             res.setGoalPosition(exit.remove(random.nextInt(exit.size() - 1)));
         }
         else {
@@ -73,10 +78,13 @@ public class MyMazeGenerator extends AMazeGenerator {
 
     }
 
+    /**
+     * initialize all the cells in the maze  as wall (value 1)
+     */
     private void initinalize(){
 
-        for (int i=0;i<width;i++)
-            for (int j=0;j<hight;j++)
+        for (int i=0;i<hight;i++)
+            for (int j=0;j<width;j++)
                 maze[i][j]=1;
     }
 }

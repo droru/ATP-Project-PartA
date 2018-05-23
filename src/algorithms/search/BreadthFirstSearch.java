@@ -10,6 +10,8 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
 
     @Override
     public Solution solve(ISearchable isearch) {
+        if(isearch == null) return null;
+
         LinkedHashSet<AState> visited = new LinkedHashSet<>();
         Queue<AState> queue = getQueue();
 
@@ -27,6 +29,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
             }
 
             List<AState> adjStates = isearch.getAllPossibleStates(vertex);
+            numNodesEvaluated++;
             for (AState state : adjStates) {
                 if(!visited.contains(state)){
                     state.setParent(vertex);
@@ -41,6 +44,12 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
         return null;
     }
 
+    /**
+     * define on which queue the algorithm is running
+     * for Breadth First Search - the type is Queue of AState
+     * for Best First Search - the type is Priority Queue of AState
+     * @return the queue for the algorithm
+     */
     protected Queue<AState> getQueue()
     {
         return new LinkedList<>();

@@ -5,6 +5,11 @@ import java.util.Random;
 public class SimpleMazeGenerator extends AMazeGenerator {
     @Override
     public Maze generate(int numRows, int numColumns) {
+        if(numRows <= 0 || numColumns <= 0)
+        {
+            /* default maze */
+            numRows=10;numColumns=10;
+        }
         Maze maze = new Maze(numRows, numColumns);
 
         //start point
@@ -23,6 +28,11 @@ public class SimpleMazeGenerator extends AMazeGenerator {
 
         return maze;
     }
+
+    /**
+     * build the path for the maze
+     * @param maze
+     */
     private void  setPath(Maze maze){
 
         boolean done =false;
@@ -34,7 +44,7 @@ public class SimpleMazeGenerator extends AMazeGenerator {
                 maze.setPosition(pos, 0);
                 pos.setColumn(pos.getColumn() + 1);
             }
-            if (pos.getRow()>maze.getGoalPosition().getColumn()) {
+            if (pos.getColumn()>maze.getGoalPosition().getColumn()) {
                 maze.setPosition(pos, 0);
                 pos.setColumn(pos.getColumn() - 1);
             }
@@ -53,6 +63,15 @@ public class SimpleMazeGenerator extends AMazeGenerator {
         }
 
     }
+
+    /**
+     * initialize all the cells in the maze
+     * the frame consists only from walls cells (with value 1)
+     * except the start position and the goal position
+     * the rest of the cells has random values
+     * except the path, the cells that already define as pass (with value 0)
+     * @param maze - the Maze to initialize
+     */
     private void initializeMaze(Maze maze){
 
         Position pos=new Position(0,0);
