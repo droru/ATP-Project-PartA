@@ -1,17 +1,18 @@
 package IO;
 
-import com.sun.deploy.util.ArrayUtil;
-
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import static com.oracle.jrockit.jfr.ContentType.Bytes;
 
 public class MyCompressorOutputStream extends OutputStream {
     private OutputStream out;
+
+    public byte[] getCopressedArray() {
+        return copressedArray;
+    }
+
+    private byte[] copressedArray;
     static final int metaData = 4*3;
 
     public MyCompressorOutputStream(OutputStream out) {
@@ -38,8 +39,24 @@ public class MyCompressorOutputStream extends OutputStream {
         byte lastByte = 0;
         int count = 0;
         List compressedBytes = new ArrayList();
-        out.write(Arrays.copyOfRange(b, 0, metaData));
-        for(int i=metaData; i < b.length; i++){
+
+        for(int i=0; i<metaData; i++){
+            compressedBytes.add(b[i]);
+        }
+
+        int val=7;byte x = 0;
+        for(int i=metaData;i<b.length;i++) {
+            x = (byte) (x |b[i] << val);
+            val--;
+            if (val == -1) {
+                val = 7;
+                compressedBytes.add(x);
+                x = 0;
+            }
+        }
+        compressedBytes.add(x);
+        //out.write(Arrays.copyOfRange(b, 0, metaData));
+        /*for(int i=metaData; i < b.length; i++){
             if(b[i] == lastByte)
                 count++;
             else{
@@ -61,9 +78,12 @@ public class MyCompressorOutputStream extends OutputStream {
         }
         compressedBytes.add((byte)count);
         //out.write(count);
-        out.write(toByteArray(compressedBytes));
+ */
+        copressedArray = toByteArray(compressedBytes);
+        out.write(copressedArray);
 
-        System.out.println ((compressedBytes.size()/b.length)*100);
+        //System.out.println ((compressedBytes.size()/b.length)*100);
+        //System.out.println(compressedBytes.toString());
     }
 
     private byte[] toByteArray(List<Byte> list){

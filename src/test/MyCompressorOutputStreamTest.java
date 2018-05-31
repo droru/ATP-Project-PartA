@@ -1,12 +1,13 @@
+package test;
+
 import IO.MyCompressorOutputStream;
-import IO.MyDecompressorInputStream;
 import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.Position;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MyCompressorOutputStreamTest {
 

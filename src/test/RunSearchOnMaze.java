@@ -1,3 +1,5 @@
+package test;
+
 import algorithms.mazeGenerators.*;
 //import algorithms.mazeGenerators.MyMazeGenerator;
 import algorithms.search.*;

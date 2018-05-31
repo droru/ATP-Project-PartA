@@ -1,3 +1,5 @@
+package test;
+
 import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.Position;
 import algorithms.search.*;

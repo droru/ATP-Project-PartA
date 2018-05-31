@@ -1,3 +1,5 @@
+package test;
+
 import IO.MyCompressorOutputStream;
 import IO.MyDecompressorInputStream;
 import algorithms.mazeGenerators.AMazeGenerator;

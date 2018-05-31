@@ -1,6 +1,8 @@
 package algorithms.mazeGenerators;
 
-public class Maze {
+import java.io.Serializable;
+
+public class Maze implements Serializable {
     private Position startPositon;
     private Position goalPosition;
     protected int [][] maze;
@@ -52,10 +54,11 @@ public class Maze {
      * index from 4 to the end - the content of the maze (row by row)
      */
     public Maze(byte[] bytes){
-        int width = bytes[0]<<24 | bytes[1]<<16 | bytes[2]<<8 | bytes[3];
+        int width = (bytes[0] & 0xFF)<<24 | (bytes[1] & 0xFF)<<16 | (bytes[2] & 0xFF)<<8 | (bytes[3] & 0xFF);
         int height = (bytes.length-metaData)/width;
-        int startInd = bytes[4]<<24 | bytes[5]<<16 | bytes[6]<<8 | bytes[7];
-        int goalInd = bytes[8]<<24 | bytes[9]<<16 | bytes[10]<<8 | bytes[11];
+        //int startInd = (bytes[4]<<24 & 0xFF) | (bytes[5]<<16 & 0xFF) | (bytes[6]<<8 & 0xFF) | (bytes[7] & 0xFF);
+        int startInd = (bytes[4] & 0xFF)<<24 | (bytes[5] & 0xFF)<<16 | (bytes[6] & 0xFF)<<8 | (bytes[7] & 0xFF);
+        int goalInd = (bytes[8] & 0xFF)<<24 | (bytes[9] & 0xFF)<<16 | (bytes[10] & 0xFF)<<8 | (bytes[11] & 0xFF);
         int[][] maze = new int[height][width];
         int i = metaData;
         for (int row=0; row<height; row++){
@@ -190,17 +193,17 @@ public class Maze {
                 Position pos = new Position(i, j);
                 if(pos.equals(startPositon)){
                     //result[4]-result[7] start index
-                    result[4] = (byte) ((index>>24) & 0xFF);
-                    result[5] = (byte) ((index>>16) & 0xFF);
-                    result[6] = (byte) ((index>>8) & 0xFF);
-                    result[7] = (byte) ((index>>0) & 0xFF);
+                    result[4] = (byte) (index>>24 & 0xFF);
+                    result[5] = (byte) (index>>16 & 0xFF);
+                    result[6] = (byte) (index>>8 & 0xFF);
+                    result[7] = (byte) (index>>0& 0xFF);
                 }
                 else if(pos.equals(goalPosition)){
                     //result[8]-result[11] goal index
-                    result[8] = (byte) ((index>>24) & 0xFF);
-                    result[9] = (byte) ((index>>16) & 0xFF);
-                    result[10] = (byte) ((index>>8) & 0xFF);
-                    result[11] = (byte) ((index>>0) & 0xFF);
+                    result[8] = (byte) (index>>24 & 0xFF);
+                    result[9] = (byte) (index>>16 & 0xFF);
+                    result[10] = (byte) (index>>8 & 0xFF);
+                    result[11] = (byte) (index>>0 & 0xFF);
                 }
                 index++;
             }

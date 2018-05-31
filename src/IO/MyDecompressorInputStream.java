@@ -2,7 +2,6 @@ package IO;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
 
 public class MyDecompressorInputStream extends InputStream {
     private InputStream in;
@@ -24,6 +23,16 @@ public class MyDecompressorInputStream extends InputStream {
                 //(Arrays.copyOfRange(b, 0, metaData));
         int data = in.read();
         int count = metaData;
+
+        while(data!=-1)
+        {
+            for (int i=7;i>-1 && count<b.length;i--) {
+                b[count] = (byte) (((data & 0xFF) >> i) & 1);
+                count++;
+            }
+            data=in.read();
+        }
+        /*
         byte lastByte = 0;
         while(data != -1){
             for (int i=0; i < data; i++){
@@ -35,7 +44,7 @@ public class MyDecompressorInputStream extends InputStream {
             else
                 lastByte = 0;
             data = in.read();
-        }
+        }*/
         return count;
     }
 }
