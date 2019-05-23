@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.storySceneController">
+      <top>
+         <MenuBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
+            <menus>
+               <Menu mnemonicParsing="false" text="File">
+                  <items>
+                     <MenuItem mnemonicParsing="false" text="New" />
+                     <MenuItem mnemonicParsing="false" text="Save" />
+                     <MenuItem mnemonicParsing="false" text="Load" />
+                  </items>
+               </Menu>
+               <Menu mnemonicParsing="false" text="Options">
+                  <items>
+                     <MenuItem mnemonicParsing="false" text="Properties" />
+                  </items>
+               </Menu>
+               <Menu mnemonicParsing="false" text="Help" />
+               <Menu mnemonicParsing="false" text="Exit" />
+               <Menu mnemonicParsing="false" text="About" />
+            </menus>
+         </MenuBar>
+      </top>
+   <center>
+         <VBox accessibleRole="BUTTON" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1005.0" BorderPane.alignment="TOP_CENTER">
+            <children>
+               <TextArea fx:id="txtarea_storyTextArea1" disable="false" prefHeight="202.0" prefWidth="1006.0" />
+               <HBox alignment="CENTER_LEFT">
+                  <Label prefWidth="50" text="width:">
+                      <HBox.margin>
+                         <Insets left="10.0" />
+                      </HBox.margin></Label>
+                   <TextField fx:id="txtfld_width" prefWidth="150" />
+               </HBox>
+               <HBox alignment="CENTER_LEFT">
+                  <Label prefWidth="50" text="height:">
+                      <HBox.margin>
+                          <Insets left="10.0" />
+                      </HBox.margin></Label>
+                   <TextField fx:id="txtfld_height" prefWidth="150" />
+               </HBox>
+               <TextArea fx:id="txtarea_storyTextArea2" prefHeight="101.0" prefWidth="1006.0" />
+               <HBox alignment="CENTER_LEFT" prefWidth="1006.0">
+                   <Label text="select level:">
+                       <HBox.margin>
+                           <Insets left="10.0" />
+                       </HBox.margin></Label>
+                   <ComboBox fx:id="combo_level" prefWidth="150" />
+               </HBox>
+            </children>
+         </VBox>
+   </center>
+   <bottom>
+         <HBox minWidth="-Infinity" prefHeight="75.0" prefWidth="-Infinity" BorderPane.alignment="CENTER">
+             <Button fx:id="btn_giveUp" alignment="CENTER" mnemonicParsing="false" onAction="#giveUp_onClick" prefHeight="34.0" prefWidth="70.0" text="Give up!" textAlignment="CENTER" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                 <HBox.margin>
+                     <Insets left="8.0" />
+                 </HBox.margin>
+             </Button>
+             <Pane HBox.hgrow="ALWAYS" />
+             <Button fx:id="btn_play" alignment="CENTER" mnemonicParsing="false" onAction="#ready_onClick" prefHeight="34.0" prefWidth="70.0" text="Ready!" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                 <HBox.margin>
+                     <Insets right="20.0" />
+                 </HBox.margin>
+             </Button>
+         </HBox>
+   </bottom>
+   </BorderPane>

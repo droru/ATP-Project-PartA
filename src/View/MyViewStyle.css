@@ -1,0 +1,98 @@
+.root{
+    -fx-background-color: #FFD97D;
+    -fx-end-margin: 50;
+}
+Label{
+    -fx-text-fill: black;
+    -fx-font-family: "Arial Narrow";
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px; /////12px
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian,rgba(255,255,255,0.5),0,0,0,1);
+}
+TextField{
+    -fx-background-insets: 3px;
+}
+TextField.error{
+    -fx-border-color: red;
+}
+ComboBox{
+    -fx-background-insets: 3px;
+}
+ComboBox.error{
+    -fx-border-color: red;
+}
+#title{
+    -fx-font-family: "Arial Black";
+    -fx-font-size: 40px;
+    -fx-text-fill: #818181;
+    -fx-effect: innershadow(three-pass-box,rgba(0,0,0,0.7),6,0.0,0,2);
+}
+
+Button {
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+#b1{
+    -fx-background-color:
+            #090a0c,
+            linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+            linear-gradient(#20262b, #191d22),
+            radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 10 20 10 20;
+}
+#b1:hover, #btn_changeMaze:hover, #btn_solve:hover{
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+}
+#btn_play{
+    -fx-background-color: linear-gradient(#f0ff35, #a9ff00);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+}
+#btn_giveUp{
+    -fx-background-color: linear-gradient(#ff5400, #be1d00);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+
+}
+#btn_giveUp:hover{
+    -fx-scale-x: 0.9;
+    -fx-scale-y: 0.9;
+    -fx-scale-z: 0.9;
+}
+#btn_play:hover{
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+    -fx-scale-z: 1.2;
+}
+.text-area, .text-area .viewport, .text-area .content {
+    -fx-background-color: transparent ;
+}
+
+#btn_changeMaze, #btn_solve {
+    -fx-background-color:
+            linear-gradient(#f2f2f2, #d6d6d6),
+            linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+            linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
